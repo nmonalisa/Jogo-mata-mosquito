@@ -1,0 +1,35 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	font: 15px arial, sans-serif;
+}
+body {
+	background: url('recursos/bg.jpg') no-repeat;
+	background-size: cover;
+	cursor: url('recursos/mata_mosca.png');
+}
+#enemy {
+	position: absolute;
+}
+.small_enemy {
+	width: 150px;
+	height: 150px;
+}
+.normal_enemy {
+	width: 200px;
+	height: 200px;
+}
+.large_enemy {
+	width: 250px;
+	height: 250px;
+}
+.rotation_right {
+	transform: rotateY(180deg);
+
+	-webkit-transform: rotateY(180deg); /*Chrome, Safari e Opera*/
+	-ms-transform: rotateY(180deg); /*IE*/
+	-moz-transform: rotateY(180deg); /*Mozilla*/
+	-o-transform: rotateY(180deg);  /*Opera*/
+}
+.rotation_left {
+}

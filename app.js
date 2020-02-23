@@ -2,7 +2,6 @@
 resizeScreen = () => window.resizeTo(window.innerWidth, window.innerHeight);
 //Variáveis globais
 let enemy = document.getElementById('enemy')
-let posicao = Array()
 //Ajustar níveis de dificuldade
 let level
 function selectLevel(element){
@@ -12,13 +11,14 @@ function selectLevel(element){
         case 'easy':
 		level = 3000;
         case 'normal':
-        level = 2000;
+        level = 1500;
         case 'hard':
-        level = 1000;
+        level = 700;
         }
 }
-//Função para criar posições aleatórias
+//criar posições aleatórias
 function createPosition(){
+let posicao = Array()
 posicao[0] = Math.floor(Math.random()*(window.innerWidth -150)) + 'px'
 posicao[1] = Math.floor(Math.random()*(window.innerHeight-150)) + 'px';
 return posicao
@@ -52,11 +52,19 @@ function myTimer(time){
     }}
     ,1000)
     }
-//Iniciar jogo
-startGame = () => showEnemy(createPosition());
-//Iniciar cronometro
+//Iniciar jogo: ao clicar no botão start:
+//esconder tela de início
+hide_container_home = () => {
+let container_home = document.getElementById('container_home');
+document.body.removeChild(container_home);
+}
+//iniciar cronometro
 startTimer = () => myTimer(90);
 startStatus =  () => {
     document.getElementById('status').style.opacity = 0.6;
     document.getElementById('enemy').style.opacity = 1.0;
 }
+//criar mosquitos
+startGame = () => showEnemy(createPosition());
+//deletar mosquitos ao clicar sobre ele
+deleteEnemy = () => document.body.removeChild(enemy);

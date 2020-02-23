@@ -1,11 +1,31 @@
 *{
 	margin: 0px;
 	padding: 0px;
-	font: 15px arial, sans-serif;
+	font: 24px arial, sans-serif;
 }
 body {
 	background: url('recursos/bg.jpg') no-repeat;
 	background-size: cover;
+}
+#container_home {
+	background: url(recursos/game.png) no-repeat center;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	height: 100%;
+	border: 1px solid red;
+
+}
+#start_buttom, #level {
+	padding: 15px;
+	border-radius: 8px;
+	border: none;
+	margin: 5px auto;
+}
+#start_buttom {
+	background-color: red;
+	color: white;
+	margin-bottom: 45px;
 }
 #enemy, #status {
 	position: absolute;
@@ -37,7 +57,7 @@ body {
 	bottom: 0px;
 	left: 0px;
 	background-color: white;
-	padding: 5px;
+	padding: 15px;
 	}
 #status_life_full {
 	position: absolute;

@@ -7,12 +7,29 @@
     </head>
 	 <body onresize="resizeScreen()"> 
 	 <!-- botão start -->
-	 <button onclick="startGame()">Iniciar</button>
-	 <!-- Início do conteúdo-->
-	  	<img id="enemy" src="recursos/mosca.png")>
-	  	<div>Painel</div>
+	 <select id='level' onclick = 'selectLevel(this)'>
+ 		<option>--Selecione um nível--</option> 
+	 	  <option value='easy' >Easy</option> 
+		  <option value='normal'>Normal</option>
+		  <option value='hard'>Hard</option>
+	 </select>
+	 <button onclick="setInterval(startGame,level),startTimer(), startStatus()">Iniciar</button>
+	 <!-- Início do conteúdosetInterval-->
+	  	<img id="enemy" src="recursos/mosca.png">
+	  	<div id="status">
+	  		<div id="status_life_full">
+	  			<img src="recursos/coracao_cheio.png">
+	  			<img src="recursos/coracao_cheio.png">
+	  			<img src="recursos/coracao_cheio.png">
+	   		</div>
+	   		<div id="status_life_empty">
+	  			<img src="recursos/coracao_vazio.png">
+	  			<img src="recursos/coracao_vazio.png">
+	  			<img src="recursos/coracao_vazio.png">
+	   		</div>
 
-		   
+	  		<div id="timer">Tempo: 90"</div>
+	  	</div>
 		<script src='app.js'></script> 
 	 </body>	
 </html>

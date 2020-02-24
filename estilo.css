@@ -8,29 +8,26 @@ body {
 	background-size: cover;
 }
 #container_home {
-	background: url(recursos/game.png) no-repeat center;
+	background: url('recursos/game.png') no-repeat center;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	height: 100%;
-	border: 1px solid red;
-
 }
 #start_buttom, #level {
 	padding: 15px;
 	border-radius: 8px;
-	border: none;
 	margin: 5px auto;
 }
 #start_buttom {
 	background-color: red;
+	border: none;
 	color: white;
 	margin-bottom: 45px;
 }
-#enemy, #status {
+#enemy {
 	position: absolute;
-	opacity: 0.0;
-}
+}	
 .small_enemy{
 	width: 75px;
 	height: 75px;
@@ -54,11 +51,13 @@ body {
 .rotation_left {
 }
 #status {
+	position: absolute;
 	bottom: 0px;
 	left: 0px;
 	background-color: white;
 	padding: 15px;
-	}
+	opacity: 0.0;
+}
 #status_life_full {
 	position: absolute;
 }

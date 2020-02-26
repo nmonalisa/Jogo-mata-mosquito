@@ -1,62 +1,101 @@
 //Função para ajustar tamanho da tela quando o body do documento for redimensionado
-resizeScreen = () => window.resizeTo(window.innerWidth, window.innerHeight);
+resizeScreen = () => window.resizeTo(window.innerWidth, window.innerHeight)
 //Variáveis globais
-//Ajustar níveis de dificuldade
 let level
-// let enemy
+let enemy_not_killed = 0
+//Ajustar níveis de dificuldade
 function selectLevel(element){
 	switch (element.value) {    
 		case '--Selecione um nível--':
-        level = "";
+        //comando para bloquear?
         case 'easy':
-		level = 4000;
+		level = 6000;
         case 'normal':
         level = 2000;
         case 'hard':
         level = 1000;
+        break
         }
+    return
 }
-//criar posições aleatórias
-function createPosition(){
-let posicao = Array()
-posicao[0] = Math.floor(Math.random()*(window.innerWidth -150)) + 'px'
-posicao[1] = Math.floor(Math.random()*(window.innerHeight-150)) + 'px';
-return posicao
+//iniciar jogo = ao clicar no botão start:
+startGame = () => createEnemy(createPosition())
+//faça:
+
+//carregue função de perder vidas
+ missHeart = () => {
+            let heart = document.getElementsByClassName('heart')
+                if (enemy_not_killed <= 3){
+                heart[enemy_not_killed-1].style.display = "none"
+                }  
+                //game over: limite de vidas perdidas
+                else {
+                    console.log('game over')
+                    let game_over = document.createElement("img")
+                    game_over.src = "recursos/game_over.png"
+                    document.body.appendChild(game_over)
+                    //parar de criar mosquitos
+                    //parar cronometro
+                    clearsetInterval(startGame)
+
+                }
+                }
+//esconda tela de início
+hide_container_home = () => {
+    let container_home = document.getElementById('container_home')
+    document.body.removeChild(container_home)
+}   
+//crie posições aleatórias
+createPosition = () => {
+    let posicao = Array()
+    posicao[0] = Math.floor(Math.random()*(window.innerWidth -150)) + 'px'
+    posicao[1] = Math.floor(Math.random()*(window.innerHeight-150)) + 'px'
+    return posicao
 }
-//Função para criar mosquitos: posição, tamanho e sentido do mosquito são aleatórios
-function createEnemy(vetor_posicao){
-//criando o elemento mosquito de forma dinamica
-//isso porque ele desaparecerá a cada clique
-//portanto, se for um elemento fixo, desaparecerá definitivamente após o primeiro clique
-//e não será possível aplicar o restante da lógica sobre o elemento
-let enemy = document.createElement("img");
-enemy.src = "recursos/mosca.png"
-enemy.setAttribute("id", "enemy");
-//anexando o elemento criado no documento html
-document.body.appendChild(enemy);
-//criando array com cada classes de tamanho definidas no .css em uma posição
-let size_enemy = ['small_enemy', 'normal_enemy', 'large_enemy']
-//sorteando um índice do array de tamanhos: 0 a 2
-let index_size = Math.floor(Math.random()*3)
-//criando array com classes do sentido de rotação definidas no .css em uma posição
-let rotation = ['rotation_right', 'rotation_left']
-//sorteando um índice do array de sentidos: 0 ou 1
-let index_rot = Math.floor(Math.random() * 2)
-//atribuindo as classes de tamanho e rotação ao elemento
-enemy.setAttribute('class', size_enemy[index_size] + " " + rotation[index_rot]);
-//atribuindo posição aleatória a cada mosquito criado
-enemy.style.left = vetor_posicao[0];
-enemy.style.top = vetor_posicao[1];
-//adicionando propriedade ao elemento para removê-lo ao clicar
-enemy.setAttribute('onclick', 'removeEnemy(this)');
-return
+//carregue a função para perder vidas
+
+//crie mosquitos: posição, tamanho e sentido do mosquito são aleatórios
+createEnemy = (vetor_posicao) => {
+    let enemy
+    //se já existe um mosquito:
+    if(document.getElementById('enemy')){
+        //delete
+            document.getElementById('enemy').remove()
+        //contabilize os mosquitos que escaparam:
+            enemy_not_killed += 1
+        //perca uma vida para cada mosquito que escapou
+        missHeart()
+         }
+    
+    //se não existe um mosquito, crie:
+    else {
+        //criar o elemento mosquito de forma dinamica
+        enemy = document.createElement("img")
+        enemy.src = "recursos/mosca.png"
+        enemy.setAttribute("id", "enemy")
+        //anexar o elemento mosquito no documento html
+        document.body.appendChild(enemy)
+        //criar array com cada classes de tamanho definidas no .css em uma posição
+        let size_enemy = ['small_enemy', 'normal_enemy', 'large_enemy']
+        //sortear um índice do array de tamanhos: 0 a 2
+        let index_size = Math.floor(Math.random()*3)
+        //criar array com classes do sentido de rotação definidas no .css em uma posição
+        let rotation = ['rotation_right', 'rotation_left']
+        //sortear um índice do array de sentidos: 0 ou 1
+        let index_rot = Math.floor(Math.random() * 2)
+        //atribuir classes de tamanho e rotação a cada mosquito criado
+        enemy.setAttribute('class', size_enemy[index_size] + " " + rotation[index_rot])
+        //atribuir posição aleatória a cada mosquito criado
+        enemy.style.left = vetor_posicao[0]
+        enemy.style.top = vetor_posicao[1]
+        //propriedade para remover mosquito com o click
+        enemy.setAttribute('onclick', 'killEnemy(this)')
+        //
+        }
+    return
 }
-//Função para remover mosquito ao clicar sobre ele
-function removeEnemy(elemento) {
-document.body.removeChild(elemento)
-}
-//criando temporizador
-function myTimer(time){
+//crie um temporizador
+myTimer = (time) => {
     setInterval(function(){
     if (time >= 0){
     let timer = document.getElementById('timer')
@@ -67,18 +106,15 @@ function myTimer(time){
     }}
     ,1000)
     }
-//Iniciar jogo: ao clicar no botão start:
-//esconder tela de início
-hide_container_home = () => {
-let container_home = document.getElementById('container_home');
-document.body.removeChild(container_home);
-}
-//iniciar cronometro
-startTimer = () => myTimer(90);
-startStatus =  () => {
-    document.getElementById('status').style.opacity = 0.6;
-}
-//criar mosquitos
-startGame = () => createEnemy(createPosition());
-//deletar mosquitos ao clicar sobre ele
-deleteEnemy = () => document.body.removeChild(enemy);
+//inicie o temporizador
+startTimer = () => myTimer(90)
+startStatus =  () => document.getElementById('status').style.opacity = 0.6
+//remova o mosquito com o click
+killEnemy = (element) => document.body.removeChild(element)
+
+//Game over: três mosquitos escapam da raquete
+//perder cada uma das três vidas:
+
+
+
+

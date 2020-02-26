@@ -15,10 +15,10 @@
 				  <option value='hard'>Hard</option>
 			 </select>
 			 <button id="start_buttom" onclick="
+			 hide_container_home(),
 			 setInterval(startGame,level),
 			 startTimer(),
-			 startStatus(),
-			 hide_container_home()">
+			 startStatus()">
 			 	Iniciar Jogo
 			</button>
 	 	</div>  
@@ -27,9 +27,9 @@
 	 <!-- Início do game-->
 	   	<div id="status">
 	  		<div id="status_life_full">
-	  			<img src="recursos/coracao_cheio.png">
-	  			<img src="recursos/coracao_cheio.png">
-	  			<img src="recursos/coracao_cheio.png">
+	  			<img src="recursos/coracao_cheio.png" class="heart">
+	  			<img src="recursos/coracao_cheio.png" class="heart">
+	  			<img src="recursos/coracao_cheio.png" class="heart">
 	   		</div>
 	   		<div id="status_life_empty">
 	  			<img src="recursos/coracao_vazio.png">

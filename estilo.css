@@ -8,6 +8,14 @@ body {
 	background-size: cover;
 	cursor: url('recursos/mata_mosca.png') 30 30, auto;
 }
+#raquete {
+	/*cursor*/
+	width: 100px;
+	height: 100px;
+	margin: auto;
+	margin-right: 20%; 
+}
+/*Containers: início do jogo, game-over e vitória*/
 #container_home, #container_end, #container_win {
 	display: flex;
 	flex-direction: column;
@@ -24,12 +32,7 @@ body {
 #container_win {
 	background: url('recursos/vitoria.png') no-repeat center;
 }
-#raquete {
-	width: 100px;
-	height: 100px;
-	margin: auto;
-	margin-right: 20%; 
-}
+/*Botões*/
 #start_buttom, #level {
 	padding: 15px;
 	border-radius: 8px;
@@ -41,6 +44,7 @@ body {
 	color: white;
 	margin-bottom: 80px;
 }
+/*Estilizando os mosquitos*/
 #enemy {
 	position: absolute;
 }	
@@ -66,6 +70,7 @@ body {
 }
 .rotation_left {
 }
+/*Barra de vidas*/
 #status {
 	position: absolute;
 	bottom: 0px;

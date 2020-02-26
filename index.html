@@ -6,15 +6,19 @@
 		<link rel="stylesheet" type="text/css" href="estilo.css">
     </head>
 	 <body onresize="resizeScreen()"> 
+		
 		 <!-- tela inicial -->
 		<div id="container_home">
-			<img src="recursos/mata_mosca.png" id="raquete">
+
+			 <img src="recursos/mata_mosca.png" id="raquete">
+
 			 <select id='level' onclick = 'selectLevel(this)'>
-		 		<option>--Selecione um nível--</option> 
+		 		  <option>--Selecione um nível--</option> 
 			 	  <option value='easy' >Easy</option> 
 				  <option value='normal'>Normal</option>
 				  <option value='hard'>Hard</option>
 			 </select>
+
 			 <button id="start_buttom" onclick="
 			 hide_container_home(),
 			 setInterval(startGame,level),
@@ -22,26 +26,30 @@
 			 startStatus()">
 			 	Iniciar Jogo
 			</button>
+
 	 	</div>  
 	 <!-- //fim tela inicial -->
 
-	 <!-- Início do game-->
+	 <!-- Início do game//barra de status-->
 	   	<div id="status">
+	   		<!-- vidas para perder -->
 	  		<div id="status_life_full">
 	  			<img src="recursos/coracao_cheio.png" class="heart">
 	  			<img src="recursos/coracao_cheio.png" class="heart">
 	  			<img src="recursos/coracao_cheio.png" class="heart">
 	   		</div>
+	   		<!-- vidas perdidas -->
 	   		<div id="status_life_empty">
 	  			<img src="recursos/coracao_vazio.png">
 	  			<img src="recursos/coracao_vazio.png">
 	  			<img src="recursos/coracao_vazio.png">
 	   		</div>
+	   		<!--cronômetro do jogo -->
 	  		<div id="timer">
 	  			Tempo: 60"
 	  		</div>
 	  	</div>
-	  	<!-- //fim do game-->
+	  	<!-- //fim da barra de status-->
 	  	
 	  	<!-- Babel Transformer para ECMAScript v5-->
 		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>

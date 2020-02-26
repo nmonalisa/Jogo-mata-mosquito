@@ -8,6 +8,7 @@
 	 <body onresize="resizeScreen()"> 
 		 <!-- tela inicial -->
 		<div id="container_home">
+			<img src="recursos/mata_mosca.png" id="raquete">
 			 <select id='level' onclick = 'selectLevel(this)'>
 		 		<option>--Selecione um nível--</option> 
 			 	  <option value='easy' >Easy</option> 
@@ -37,11 +38,14 @@
 	  			<img src="recursos/coracao_vazio.png">
 	   		</div>
 	  		<div id="timer">
-	  			Tempo: 90"
+	  			Tempo: 60"
 	  		</div>
 	  	</div>
-
-
-		<script src='app.js'></script> 
+	  	<!-- //fim do game-->
+	  	
+	  	<!-- Babel Transformer para ECMAScript v5-->
+		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+		<script type="text/babel"></script>
+		<script src='app.js'></script>
 	 </body>	
 </html>

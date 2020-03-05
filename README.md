@@ -12,5 +12,5 @@ Níveis de dificuldade: está relacionando ao tempo que o mosquito permanece na 
 	<li>Difícil: 1seg</li>
 </ul>
 </p>
-<p>As imagens foram cedida pelo curso </p>
-<p><strong>Em constante construção!</strong></p>
+<p>As imagens do jogo foram cedida pelo curso </p>
+

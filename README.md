@@ -1,4 +1,4 @@
-##Jogo Mata-mosquito <br />
+### Jogo Mata-mosquito
 
 ![Capa](recursos/capa.png)
 
@@ -13,4 +13,6 @@ Níveis de dificuldade: está relacionando ao tempo que o mosquito permanece na 
 </ul>
 </p>
 <p>As imagens do jogo foram cedida pelo curso </p>
+
+__Link:__ https://nmonalisa.github.io/Jogo-Mata-Mosquito/
 
